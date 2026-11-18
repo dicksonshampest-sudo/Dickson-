@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dickson Shampest | Official Music Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & VARIABLES ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root {
+      --primary: #7c3aed;
+      --primary-dark: #6d28d9;
+      --primary-light: #a78bfa;
+      --secondary: #f59e0b;
+      --secondary-light: #fbbf24;
+      --bg: #0b0b0e;
+      --bg-card: rgba(255, 255, 255, 0.06);
+      --text: #f1f1f1;
+      --text-muted: #a0a0b0;
+      --border: rgba(255, 255, 255, 0.08);
+      --glass: rgba(255, 255, 255, 0.06);
+      --radius: 16px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: var(--radius);
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(11, 11, 14, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+      transition: var(--transition);
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.5px;
+    }
+    .logo img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary);
+    }
+    .logo-text {
+      background: linear-gradient(135deg, #fff 50%, var(--primary-light), var(--secondary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    /* ===== DROPDOWN NAV ===== */
+    .nav-dropdown {
+      position: relative;
+    }
+    .nav-dropdown-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      background: var(--glass);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: 'Inter', sans-serif;
+    }
+    .nav-dropdown-toggle:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+    .nav-dropdown-toggle .arrow {
+      font-size: 0.7rem;
+      transition: var(--transition);
+      display: inline-block;
+    }
+    .nav-dropdown-toggle .arrow.open {
+      transform: rotate(180deg);
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      min-width: 220px;
+      background: rgba(11, 11, 14, 0.96);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 8px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: all 0.25s ease;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+      z-index: 1001;
+    }
+    .nav-dropdown-menu.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .nav-dropdown-menu a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 20px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+      cursor: pointer;
+      border-left: 3px solid transparent;
+    }
+    .nav-dropdown-menu a:hover {
+      background: var(--glass);
+      color: #fff;
+      border-left-color: var(--primary);
+    }
+    .nav-dropdown-menu a .nav-icon {
+      font-size: 1.1rem;
+      width: 24px;
+      text-align: center;
+    }
+    .nav-dropdown-menu a.active-link {
+      color: #fff;
+      border-left-color: var(--primary);
+      background: var(--glass);
+    }
+
+    /* Mobile toggle */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--text);
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+    .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+    .mobile-nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0,0,0,0.5);
+    }
+    .mobile-nav-overlay.active { display: block; }
+    .mobile-nav-menu {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 280px;
+      height: 100vh;
+      background: rgba(11, 11, 14, 0.98);
+      backdrop-filter: blur(16px);
+      padding: 80px 24px 40px;
+      transition: right 0.3s ease;
+      z-index: 1000;
+      overflow-y: auto;
+      border-left: 1px solid var(--border);
+    }
+    .mobile-nav-menu.open { right: 0; }
+    .mobile-nav-menu a {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      color: var(--text-muted);
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 12px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .mobile-nav-menu a:hover,
+    .mobile-nav-menu a.active-link {
+      background: var(--glass);
+      color: #fff;
+    }
+    .mobile-nav-menu a .nav-icon {
+      font-size: 1.3rem;
+      width: 28px;
+      text-align: center;
+    }
+    .mobile-nav-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.8rem;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    /* ===== PAGES ===== */
+    .page {
+      display: none;
+      padding-top: 80px;
+      min-height: 100vh;
+    }
+    .page.active { display: block; }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 0 60px;
+      background: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=1600&q=80') center/cover no-repeat;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.7) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-tagline {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: var(--secondary-light);
+      margin-bottom: 12px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 12vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #fff 30%, var(--primary-light), var(--secondary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+    .hero-sub {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    .hero-sub span {
+      color: var(--secondary-light);
+      -webkit-text-fill-color: var(--secondary-light);
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      text-align: center;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(124, 58, 237, 0.6);
+    }
+    .btn-secondary {
+      background: var(--glass);
+      color: #fff;
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-3px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary-light);
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+      color: #1a1a2e;
+      font-weight: 700;
+    }
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(245, 158, 11, 0.4);
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #fff, var(--primary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .view-all {
+      color: var(--primary-light);
+      font-weight: 500;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .view-all:hover { color: #fff; }
+
+    /* ===== FEATURED MUSIC ===== */
+    .featured-card {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 32px;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 24px;
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .featured-card:hover { border-color: var(--primary); }
+    .featured-cover img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+    .featured-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .featured-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--secondary-light);
+      margin-bottom: 4px;
+    }
+    .featured-info h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff, var(--primary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .featured-artist {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .audio-player-mini {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(0,0,0,0.4);
+      padding: 12px 18px;
+      border-radius: 50px;
+      margin: 12px 0 16px;
+      width: 100%;
+      max-width: 400px;
+    }
+    .play-btn {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .play-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+    }
+    .play-btn.disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .play-btn.disabled:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    .progress-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .time-current, .time-duration {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      min-width: 36px;
+    }
+    .progress-bar {
+      flex: 1;
+      height: 4px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 4px;
+      cursor: pointer;
+      position: relative;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary-light));
+      border-radius: 4px;
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+    .featured-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .stream-link {
+      font-size: 0.8rem;
+      padding: 4px 14px;
+      border-radius: 20px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .stream-link:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+    .no-audio-msg {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      padding: 4px 0;
+    }
+
+    /* ===== VIDEO FEATURED ===== */
+    .video-featured {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 32px;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 24px;
+      border: 1px solid var(--border);
+    }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .video-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #fff, var(--primary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .video-info p { color: var(--text-muted); }
+
+    /* ===== GALLERY GRID ===== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .gallery-item {
+      cursor: pointer;
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: var(--transition);
+      position: relative;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item::after {
+      content: '🔍';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      font-size: 2rem;
+      color: #fff;
+      background: rgba(0,0,0,0.5);
+      padding: 12px;
+      border-radius: 50%;
+      transition: var(--transition);
+      opacity: 0;
+    }
+    .gallery-item:hover::after {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* ===== ABOUT SNIPPET ===== */
+    .about-snippet-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .about-snippet-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff, var(--primary-light), var(--secondary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .about-snippet-text p {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      font-size: 1.05rem;
+    }
+    .about-snippet-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+    }
+
+    /* ===== SOCIAL FOLLOW ===== */
+    .social-follow {
+      text-align: center;
+      background: radial-gradient(ellipse at center, #1a1430, transparent);
+    }
+    .social-follow h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 32px;
+      background: linear-gradient(135deg, #fff, var(--secondary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--glass);
+      border: 2px solid var(--border);
+      transition: var(--transition);
+      color: var(--text-muted);
+    }
+    .social-icon:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
+    }
+    .social-icon svg {
+      width: 26px;
+      height: 26px;
+      fill: currentColor;
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      padding: 60px 0 20px;
+      border-top: 1px solid var(--border);
+      background: rgba(0,0,0,0.3);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-brand .logo-text {
+      font-size: 1.2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff, var(--primary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .footer-brand p {
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+    .footer-links h4, .footer-social h4 {
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--secondary-light);
+    }
+    .footer-links ul {
+      list-style: none;
+    }
+    .footer-links li {
+      margin-bottom: 6px;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .footer-links a:hover { color: #fff; }
+    .footer-social-icons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .footer-social-icons a {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .footer-social-icons a:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* ===== LIGHTBOX ===== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(12px);
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox-content {
+      max-width: 80vw;
+      max-height: 80vh;
+    }
+    .lightbox-content img {
+      width: 100%;
+      height: auto;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .lightbox-close, .lightbox-prev, .lightbox-next {
+      position: absolute;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2.4rem;
+      cursor: pointer;
+      transition: var(--transition);
+      padding: 12px;
+    }
+    .lightbox-close { top: 20px; right: 30px; }
+    .lightbox-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+    .lightbox-next { right: 20px; top: 50%; transform: translateY(-50%); }
+    .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover {
+      color: var(--secondary-light);
+      transform: scale(1.1);
+    }
+    .lightbox-caption {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      font-size: 1rem;
+      background: rgba(0,0,0,0.5);
+      padding: 8px 20px;
+      border-radius: 30px;
+    }
+
+    /* ===== PAGE HERO ===== */
+    .page-hero {
+      padding: 140px 0 60px;
+      background: radial-gradient(ellipse at 50% 0%, #1e1a3a, #0b0b0e);
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #fff, var(--primary-light), var(--secondary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .page-hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    /* ===== MUSIC / VIDEO GRIDS ===== */
+    .song-grid, .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 24px;
+    }
+    .song-card, .video-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 16px;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      text-align: center;
+    }
+    .song-card:hover, .video-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.1);
+    }
+    .song-card img, .video-card img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+    }
+    .song-card h4, .video-card h4 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+      color: #fff;
+    }
+    .song-card p, .video-card p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .song-card .play-song-btn {
+      margin-top: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border: none;
+      color: #fff;
+      padding: 6px 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .song-card .play-song-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .contact-info {
+      background: var(--bg-card);
+      padding: 32px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    .contact-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+      color: var(--secondary-light);
+    }
+    .contact-info p {
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .contact-info .icon {
+      font-size: 1.2rem;
+    }
+    .contact-form {
+      background: var(--bg-card);
+      padding: 32px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: #fff;
+      font-family: inherit;
+      transition: var(--transition);
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    .contact-form button {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border: none;
+      color: #fff;
+      padding: 12px 32px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .contact-form button:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .featured-card { grid-template-columns: 1fr; text-align: center; }
+      .featured-cover img { margin: 0 auto; }
+      .audio-player-mini { max-width: 100%; }
+      .video-featured { grid-template-columns: 1fr; }
+      .about-snippet-inner { grid-template-columns: 1fr; text-align: center; }
+      .about-snippet-image img { height: 300px; }
+      .footer-grid { grid-template-columns: 1fr; text-align: center; }
+      .contact-wrapper { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+      .nav-dropdown { display: none; }
+      .hero h1 { font-size: 3.6rem; }
+      .section { padding: 60px 0; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .lightbox-content { max-width: 95vw; max-height: 70vh; }
+      .hero { min-height: 80vh; }
+    }
+    @media (min-width: 769px) {
+      .mobile-nav-overlay, .mobile-nav-menu { display: none !important; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .hero-buttons .btn { width: 100%; }
+      .featured-info h3 { font-size: 1.4rem; }
+      .page-hero h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="logo">
+      <a href="#">
+        <!-- REPLACE THIS SRC WITH YOUR LOGO IMAGE URL -->
+        <img src="images/logo.png" alt="Dickson Shampest Logo" />
+        <span class="logo-text">DICKSON SHAMPEST</span>
+      </a>
+    </div>
+
+    <!-- Desktop Dropdown -->
+    <div class="nav-dropdown" id="desktopDropdown">
+      <button class="nav-dropdown-toggle" id="dropdownToggle">
+        <span>📄</span> Pages <span class="arrow" id="dropdownArrow">▼</span>
+      </button>
+      <div class="nav-dropdown-menu" id="dropdownMenu">
+        <a class="nav-link" data-page="home"><span class="nav-icon">🏠</span> Home</a>
+        <a class="nav-link" data-page="music"><span class="nav-icon">🎵</span> Music</a>
+        <a class="nav-link" data-page="videos"><span class="nav-icon">🎬</span> Videos</a>
+        <a class="nav-link" data-page="photos"><span class="nav-icon">📸</span> Photos</a>
+        <a class="nav-link" data-page="about"><span class="nav-icon">👤</span> About</a>
+        <a class="nav-link" data-page="events"><span class="nav-icon">📅</span> Events</a>
+        <a class="nav-link" data-page="blog"><span class="nav-icon">📰</span> News</a>
+        <a class="nav-link" data-page="contact"><span class="nav-icon">✉️</span> Contact</a>
+      </div>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== MOBILE NAV OVERLAY & MENU ===== -->
+<div class="mobile-nav-overlay" id="mobileOverlay"></div>
+<div class="mobile-nav-menu" id="mobileMenu">
+  <button class="mobile-nav-close" id="mobileClose">✕</button>
+  <a class="nav-link" data-page="home"><span class="nav-icon">🏠</span> Home</a>
+  <a class="nav-link" data-page="music"><span class="nav-icon">🎵</span> Music</a>
+  <a class="nav-link" data-page="videos"><span class="nav-icon">🎬</span> Videos</a>
+  <a class="nav-link" data-page="photos"><span class="nav-icon">📸</span> Photos</a>
+  <a class="nav-link" data-page="about"><span class="nav-icon">👤</span> About</a>
+  <a class="nav-link" data-page="events"><span class="nav-icon">📅</span> Events</a>
+  <a class="nav-link" data-page="blog"><span class="nav-icon">📰</span> News</a>
+  <a class="nav-link" data-page="contact"><span class="nav-icon">✉️</span> Contact</a>
+</div>
+
+<!-- ===== PAGES ===== -->
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <div class="hero-text">
+        <p class="hero-tagline">🎵 MUSIC · ART · LIFE 🎵</p>
+        <h1>Dickson Shampest</h1>
+        <p class="hero-sub">Singer · Songwriter · <span>Performer</span></p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary nav-link" data-page="music">🎧 Listen Now</a>
+          <a class="btn btn-secondary nav-link" data-page="videos">▶ Watch Video</a>
+          <a class="btn btn-gold nav-link" data-page="contact">📩 Book Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+<!-- FEATURED MUSIC -->
+<section class="section featured-music">
+
+  <div class="container">
+
+    <div class="section-header">
+      <h2>Latest Release</h2>
+      <span class="view-all nav-link" data-page="music">
+        View All →
+      </span>
+    </div>
+
+    <div class="featured-card">
+
+      <!-- SONG COVER -->
+      <div class="featured-cover">
+        <img
+          src="images/cover photo.png"
+          alt="Beautiful Love Song Cover"
+          id="featuredCover"
+        />
+      </div>
+
+      <!-- SONG INFORMATION -->
+      <div class="featured-info">
+
+        <span class="featured-label">
+          NEW SINGLE
+        </span>
+
+        <h3 id="featuredTitle">
+          abundance calling
+        </h3>
+        <p class="featured-artist">
+          Dickson Shampest
+        </p>
+        <!-- YOUR SONG --->
+         <audio
+  id="featuredAudio"
+  src="audio/abundance-calling.mp3"
+  preload="metadata"
+  controls>
+
+
+<!-- AUDIO PLAYER -->
+<div class="audio-player-mini" id="miniPlayer">
+    <button
+    class="play-btn"
+    id="miniPlayBtn"
+    aria-label="Play">
+    <svg viewBox="0 0 24 24" width="28" height="28">
+      <polygon
+        points="5,3 19,12 5,21"
+        fill="currentColor">
+      </polygon>
+    </svg>
+</button>
+  <div class="progress-wrap">
+    <span id="miniCurrent">0:00</span>
+    <div class="progress-bar" id="miniProgressBar">
+      <div
+        class="progress-fill"
+        id="miniProgressFill"
+        style="width:0%">
+      </div>
+    </div>
+    <span id="miniDuration">0:00</span>
+</div>
+</div>
+ </div>
+        <!-- STREAMING LINKS -->
+        <div class="featured-links">
+            <a href="#" class="stream-link">
+            Spotify
+          </a>
+          <a href="#" class="stream-link">
+            Apple Music
+          </a>
+          <a href="#" class="stream-link">
+            YouTube
+          </a>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+
+
+  </section>
+
+  <!-- Latest Video -->
+  <section class="section latest-video">
+    <div class="container">
+      <div class="section-header">
+        <h2>🎬 Latest Video</h2>
+        <span class="view-all nav-link" data-page="videos">View All →</span>
+      </div>
+      <div class="video-featured">
+        <div class="video-wrapper">
+          <!-- REPLACE WITH YOUR YOUTUBE VIDEO URL -->
+          <!-- YOUR YOUTUBE VIDEO -->
+<iframe
+  src="https://www.youtube.com/embed/IzJy5WsdCmM"
+  title="Latest Music Video"
+  allowfullscreen
+  loading="lazy">
+</iframe>
+        </div>
+        <div class="video-info">
+          <h3>dream come true
+          <p>Watch the official music video for "dream come true all platforms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Preview -->
+  <section class="section photo-preview">
+    <div class="container">
+      <div class="section-header">
+        <h2>📸 Photo Gallery</h2>
+        <span class="view-all nav-link" data-page="photos">View All →</span>
+      </div>
+      <div class="gallery-grid" id="homeGallery">
+        <!-- REPLACE WITH YOUR PHOTO URLs -->
+        <div class="gallery-item"><img src="images/22.png" alt="Gallery 1" /></div>
+        <div class="gallery-item"><img src="images/111.png" alt="Gallery 2" /></div>
+        <div class="gallery-item"><img src="images/wwww.jpg" alt="Gallery 3" /></div>
+        <div class="gallery-item"><img src="images/Screenshot_2026-08-16-15-09-08-81_754cf9a4094c34a8eeb04648e2e3eb8d.jpg" alt="Gallery 4" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Snippet -->
+  <section class="section about-snippet">
+    <div class="container">
+      <div class="about-snippet-inner">
+        <div class="about-snippet-text">
+          <h2>👤 About Dickson</h2>
+          <p>Dickson Shampest is a <span style="color:var(--secondary-light);">singer-songwriter</span> whose music blends soulful melodies with contemporary African rhythms. With a passion for storytelling, his songs explore <span style="color:var(--primary-light);">love, life, and the human experience</span>.</p>
+          <a class="btn btn-outline nav-link" data-page="about">Read More →</a>
+        </div>
+        <div class="about-snippet-image">
+          <!-- REPLACE WITH YOUR PROFILE PHOTO -->
+          <img src="images/lv_0_20260619115702.jpg" alt="Dickson Shampest" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Follow -->
+  <section class="section social-follow">
+    <div class="container">
+      <h2> Follow Me</h2>
+      <div class="social-links">
+        <a href="https://instagram.com/dicksonshampest" target="_blank" class="social-icon" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="https://facebook.com/dicksonshampest" target="_blank" class="social-icon" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://twitter.com/dicksonshampest" target="_blank" class="social-icon" aria-label="Twitter">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://youtube.com/@dicksonshampest" target="_blank" class="social-icon" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <a href="https://tiktok.com/@dicksonshampest" target="_blank" class="social-icon" aria-label="TikTok">
+          <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.76-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- MUSIC -->
+<div class="page" id="page-music">
+  <section class="page-hero">
+    <div class="container"><h1>🎵 Music</h1><p>All my released songs, singles, and features.</p></div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="song-grid">
+        <!-- REPLACE WITH YOUR SONGS - update src, title, and audio file URL -->
+        <div class="song-card">
+          <img src="images/lv_0_20260718081415.jpg" alt="dream come true" />
+          <h4>Beautiful Love</h4>
+          <p>Dickson Shampest</p>
+          <button class="play-song-btn" data-src="audio/SHAMPEST_Gunsters anthem (official audio)1.mp3" data-title="dream come true">▶ Play</button>
+        </div>
+        <div class="song-card">
+          <img src="images/22.png" alt="Midnight Dreams" />
+          <h4>Midnight Dreams</h4>
+          <p>Dickson Shampest</p>
+          <button class="play-song-btn" data-src="audio/Shampest_discouraged_ft_Lenny_cee_x_vicious.mp3.mp3" data-title="Midnight Dreams">▶ Play</button>
+        </div>
+        <div class="song-card">
+          <img src="images/22.png" alt="New Beginning" />
+          <h4>New Beginning</h4>
+          <p>Dickson Shampest</p>
+          <button class="play-song-btn" data-src="audio/Yp ft Shampest against the world (Pro  by YPIZO).mp3" data-title="New Beginning">▶ Play</button>
+        </div>
+        <div class="song-card">
+          <img src="images/33.jpg" alt="My Story" />
+          <h4>My Story</h4>
+          <p>Dickson Shampest</p>
+          <button class="play-song-btn" data-src="audio/Shampest_just_wanna_see_you_smile.mp3" data-title="My Story">▶ Play</button>
+        </div>
+        <div class="song-card">
+          <img src="images/two.png" alt="Rise Up" />
+          <h4>Rise Up</h4>
+          <p>Dickson Shampest</p>
+          <button class="play-song-btn" data-src="audio/vicious_boy_ft_shampest-_ghetto_life.mp3_-__Prod_By_Anti_Virus_Beats_.mp3.mp3" data-title="Rise Up">▶ Play</button>
+        </div>
+        <div class="song-card">
+          <img src="images/111.png" alt="African Soul" />
+          <h4>African Soul</h4>
+          <p>Dickson Shampest</p>
+          <button class="play-song-btn" data-src="audio/Yp ft Shampest against the world (Pro  by YPIZO).mp3" data-title="African Soul">▶ Play</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+```html
+<!-- VIDEOS & MEDIA -->
+<div class="page" id="page-videos">
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>🎬 Videos & Media</h1>
+      <p>Music videos, live performances, studio sessions and exclusive content.</p>
+    </div>
+  </section>
+
+
+  <!-- OFFICIAL VIDEOS -->
+  <section class="section">
+
+    <div class="container">
+
+      <div class="section-header">
+        <h2>🎬 Official Videos</h2>
+      </div>
+
+      <div class="video-grid">
+
+
+        <!-- FALLING DOWN -->
+        <div class="video-card">
+
+          <div class="video-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/IzJy5WsdCmM"
+              title="Falling Down Official Video"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+
+          <div class="video-info">
+            <span class="video-category">OFFICIAL VIDEO</span>
+
+            <h4>Falling Down</h4>
+
+            <p>Dickson Shampest</p>
+          </div>
+
+        </div>
+
+
+        <!-- BEHIND THE SCENES -->
+        <div class="video-card">
+
+          <div class="video-wrapper">
+
+            <img
+              src="images/one.png"
+              alt="Behind the Scenes">
+
+          </div>
+
+          <div class="video-info">
+
+            <span class="video-category">BEHIND THE SCENES</span>
+
+            <h4>Behind the Scenes</h4>
+
+            <p>Studio & Music Video BTS</p>
+
+          </div>
+
+        </div>
+
+
+        <!-- LIVE PERFORMANCE -->
+        <div class="video-card">
+
+          <div class="video-wrapper">
+
+            <img
+              src="images/lv_0_20260619115702.jpg"
+              alt="Live Performance">
+
+          </div>
+
+          <div class="video-info">
+
+            <span class="video-category">LIVE</span>
+
+            <h4>Live Performance</h4>
+
+            <p>Dickson Shampest Live</p>
+
+          </div>
+
+        </div>
+
+
+        <!-- ACOUSTIC SESSION -->
+        <div class="video-card">
+
+          <div class="video-wrapper">
+
+            <img
+              src="images/lv_0_20260718081415.jpg"
+              alt="Acoustic Session">
+
+          </div>
+
+          <div class="video-info">
+
+            <span class="video-category">ACOUSTIC</span>
+
+            <h4>Acoustic Session</h4>
+
+            <p>Live Acoustic Performance</p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- MUSIC SECTION -->
+  <section class="section music-media">
+
+    <div class="container">
+
+      <div class="section-header">
+
+        <h2>🎵 Listen to My Music</h2>
+
+        <p>Play my music directly from the website.</p>
+
+      </div>
+
+
+      <div class="music-grid">
+
+
+        <!-- ABUNDANCE CALLING -->
+        <div class="music-card">
+
+          <div class="music-cover">
+
+            <img
+              src="images/cover photo.png"
+              alt="Abundance Calling">
+
+          </div>
+
+          <div class="music-details">
+
+            <span class="music-label">
+              LATEST RELEASE
+            </span>
+
+            <h3>Abundance Calling</h3>
+
+            <p>Dickson Shampest</p>
+
+
+            <!-- ACTUAL AUDIO -->
+            <audio
+              controls
+              preload="metadata">
+
+              <source
+                src="audio/abundance-calling.mp3"
+                type="audio/mpeg">
+
+              Your browser does not support audio playback.
+
+            </audio>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- dream come true -->
+        <div class="music-card">
+
+          <div class="music-cover">
+
+            <img
+              src="images/wwww.jpg"
+              alt="dream come true">
+
+          </div>
+          <div class="music-details">
+            <span class="music-label">
+              SINGLE
+            </span>
+
+            <h3>dream come true</h3>
+            <p>Dickson Shampest</p>
+
+
+            <!-- ACTUAL AUDIO -->
+<audio controls preload="metadata">
+  <source
+    src="./audio/Shampest_discouraged_ft_Lenny_cee_x_vicious.mp3"
+    type="audio/mpeg">
+
+  Your browser does not support audio playback.
+</audio>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- MEDIA CTA -->
+  <section class="section media-cta">
+
+    <div class="container">
+
+      <div class="cta-box">
+
+        <h2>More Music & Videos Coming Soon 🎶</h2>
+
+        <p>
+          Stay connected with Dickson Shampest for new music,
+          official videos, live performances and exclusive content.
+        </p>
+
+        <div class="cta-buttons">
+
+          <a
+            href="#"
+            class="btn btn-primary">
+            Follow Me
+          </a>
+          <a
+            href="#"
+            class="btn btn-secondary">
+            Contact for Bookings
+          </a>
+        </div>
+    </div>
+    </div>
+</section>
+</div>
+
+
+<!-- PHOTOS -->
+<div class="page" id="page-photos">
+  <section class="page-hero">
+    <div class="container"><h1>📸 Photos</h1><p>Gallery of moments from my journey.</p></div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="gallery-grid" id="fullGallery">
+        <!-- REPLACE WITH YOUR PHOTO URLs -->
+        <div class="gallery-item"><img src="images/one.png" alt="Photo 1" /></div>
+        <div class="gallery-item"><img src="images/Screenshot_2026-08-16-15-09-08-81_754cf9a4094c34a8eeb04648e2e3eb8d.jpg" alt="Photo 2" /></div>
+        <div class="gallery-item"><img src="images/lv_0_20260619115702.jpg" alt="Photo 3" /></div>
+        <div class="gallery-item"><img src="images/111.png" alt="Photo 4" /></div>
+        <div class="gallery-item"><img src="images/wwww.jpg" alt="Photo 5" /></div>
+        <div class="gallery-item"><img src="images/lv_0_20260718081415.jpg" alt="Photo 6" /></div>
+        <div class="gallery-item"><img src="images/22.png" alt="Photo 7" /></div>
+        <div class="gallery-item"><img src="images/two.png" alt="Photo 8" /></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ABOUT -->
+<div class="page" id="page-about">
+  <section class="page-hero">
+    <div class="container"><h1>👤 About Dickson</h1><p>Learn more about the artist.</p></div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div style="max-width:800px;margin:0 auto;text-align:center;">
+        <img src="images/lv_0_20260619115702.jpg" alt="Dickson" style="border-radius:var(--radius);margin-bottom:32px;width:100%;max-width:600px;margin-left:auto;margin-right:auto;" />
+        <h2 style="font-family:'Playfair Display',serif;font-size:2.4rem;margin-bottom:16px;background:linear-gradient(135deg,#fff,var(--primary-light),var(--secondary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Dickson Shampest</h2>
+        <p style="color:var(--text-muted);font-size:1.1rem;margin-bottom:24px;">Dickson Shampest is a <span style="color:var(--secondary-light);">singer-songwriter</span> from Zambia. His music blends soulful melodies with contemporary African rhythms, creating a sound that is both timeless and fresh. With a passion for storytelling, his songs explore <span style="color:var(--primary-light);">love, life, and the human experience</span>.</p>
+        <p style="color:var(--text-muted);font-size:1.1rem;margin-bottom:24px;">He has performed at numerous festivals and venues across Africa and continues to captivate audiences with his powerful voice and heartfelt lyrics.</p>
+        <p style="color:var(--text-muted);font-size:1.1rem;">His music is available on all major streaming platforms. <span style="color:var(--secondary-light);">Stay tuned for more!</span></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- EVENTS -->
+<div class="page" id="page-events">
+  <section class="page-hero">
+    <div class="container"><h1>📅 Events</h1><p>Upcoming shows and performances.</p></div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div style="max-width:700px;margin:0 auto;">
+        <div class="song-card" style="margin-bottom:20px;text-align:left;padding:24px;">
+          <h4 style="color:var(--secondary-light);">📍 Lusaka Music Festival</h4>
+          <p style="color:var(--text-muted);">📅 April 15, 2026 · 7:00 PM</p>
+          <p>🏟️ Heroes Stadium, Lusaka</p>
+          <a href="#" class="btn btn-primary" style="margin-top:12px;display:inline-block;">🎟️ Get Tickets</a>
+        </div>
+        <div class="song-card" style="margin-bottom:20px;text-align:left;padding:24px;">
+          <h4 style="color:var(--secondary-light);">📍 Acoustic Night</h4>
+          <p style="color:var(--text-muted);">📅 May 2, 2026 · 8:00 PM</p>
+          <p>☕ Kaya Café, Ndola</p>
+          <a href="#" class="btn btn-primary" style="margin-top:12px;display:inline-block;">🎟️ Get Tickets</a>
+        </div>
+        <div class="song-card" style="margin-bottom:20px;text-align:left;padding:24px;">
+          <h4 style="color:var(--secondary-light);">📍 Summer Jam</h4>
+          <p style="color:var(--text-muted);">📅 June 20, 2026 · 3:00 PM</p>
+          <p>🌳 Munda Wanga, Chilanga</p>
+          <a href="#" class="btn btn-primary" style="margin-top:12px;display:inline-block;">🎟️ Get Tickets</a>
+        </div>
+        <div class="song-card" style="text-align:left;padding:24px;">
+          <h4 style="color:var(--secondary-light);">📍 Urban Groove Festival</h4>
+          <p style="color:var(--text-muted);">📅 July 10, 2026 · 6:00 PM</p>
+          <p>🏛️ Mulungushi Conference Centre, Lusaka</p>
+          <a href="#" class="btn btn-primary" style="margin-top:12px;display:inline-block;">🎟️ Get Tickets</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- BLOG / NEWS -->
+<div class="page" id="page-blog">
+  <section class="page-hero">
+    <div class="container"><h1>📰 News</h1><p>Latest updates and announcements.</p></div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div style="max-width:800px;margin:0 auto;">
+        <div class="featured-card" style="margin-bottom:24px;">
+          <div style="flex:1;">
+            <span class="featured-label"> NEW SINGLE</span>
+            <h3 style="font-size:1.6rem;background:linear-gradient(135deg,#fff,var(--primary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">"Beautiful Love" Out Now</h3>
+            <p style="color:var(--text-muted);">📅 August 20, 2026</p>
+            <p style="color:var(--text-muted);">My new single "Beautiful Love" is now available on all streaming platforms. Thank you for all the love! ❤️</p>
+          </div>
+        </div>
+        <div class="featured-card" style="margin-bottom:24px;">
+          <div style="flex:1;">
+            <span class="featured-label">🎤 ANNOUNCEMENT</span>
+            <h3 style="font-size:1.6rem;background:linear-gradient(135deg,#fff,var(--secondary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Upcoming Live Performance</h3>
+            <p style="color:var(--text-muted);">📅 August 15, 2026</p>
+            <p style="color:var(--text-muted);">I'll be performing at the Lusaka Music Festival on April 15. See you there! 🎵</p>
+          </div>
+        </div>
+        <div class="featured-card" style="margin-bottom:24px;">
+          <div style="flex:1;">
+            <span class="featured-label">🎬 VIDEO</span>
+            <h3 style="font-size:1.6rem;background:linear-gradient(135deg,#fff,var(--primary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Behind The Scenes Dropping Soon</h3>
+            <p style="color:var(--text-muted);">📅 August 10, 2026</p>
+            <p style="color:var(--text-muted);">Get ready for exclusive behind-the-scenes footage from the "Beautiful Love" video shoot. Coming this week! 🎥</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CONTACT -->
+<div class="page" id="page-contact">
+  <section class="page-hero">
+    <div class="container"><h1>✉️ Contact</h1><p>Get in touch for bookings, collaborations, or just to say hello.</p></div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <h3> Get In Touch</h3>
+          <p><span class="icon">📧</span> <a href="mailto:xbluemim@gmail.com">xbluemim@gmail.com</a></p>
+          <p><span class="icon">📞</span> <a href="tel:+26077174798">+260 77 174 798</a></p>
+          <p><span class="icon">📍</span> Lusaka, Zambia</p>
+          <p><span class="icon">🌐</span> <a href="https://dicksonshampest.com" target="_blank">dicksonshampest.com</a></p>
+          <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border);">
+            <h4 style="color:var(--secondary-light);">Follow Me</h4>
+            <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
+              <a href="https://instagram.com/dicksonshampest" target="_blank" style="color:var(--text-muted);">📸 Instagram</a>
+              <a href="https://facebook.com/dicksonshampest" target="_blank" style="color:var(--text-muted);">👍 Facebook</a>
+              <a href="https://youtube.com/@dicksonshampest" target="_blank" style="color:var(--text-muted);">▶ YouTube</a>
+              <a href="https://twitter.com/dicksonshampest" target="_blank" style="color:var(--text-muted);">🐦 Twitter</a>
+              <a href="https://tiktok.com/@dicksonshampest" target="_blank" style="color:var(--text-muted);">🎵 TikTok</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form id="contactForm">
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <input type="text" placeholder="Subject" />
+            <textarea rows="5" placeholder="Your Message..." required></textarea>
+            <button type="submit">📤 Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-text">♪ DICKSON SHAMPEST</span>
+        <p>🎵 Music · Art · Life 🎵</p>
+      </div>
+      <div class="footer-links">
+        <h4>📄 Pages</h4>
+        <ul>
+          <li><a class="nav-link" data-page="home">🏠 Home</a></li>
+          <li><a class="nav-link" data-page="music">🎵 Music</a></li>
+          <li><a class="nav-link" data-page="videos">🎬 Videos</a></li>
+          <li><a class="nav-link" data-page="photos">📸 Photos</a></li>
+          <li><a class="nav-link" data-page="about">👤 About</a></li>
+          <li><a class="nav-link" data-page="events">📅 Events</a></li>
+          <li><a class="nav-link" data-page="blog">📰 News</a></li>
+          <li><a class="nav-link" data-page="contact">✉️ Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h4> Connect</h4>
+        <div class="footer-social-icons">
+          <a href="https://instagram.com/dicksonshampest" target="_blank">📸 IG</a>
+          <a href="https://facebook.com/dicksonshampest" target="_blank">👍 FB</a>
+          <a href="https://twitter.com/dicksonshampest" target="_blank">🐦 X</a>
+          <a href="https://youtube.com/@dicksonshampest" target="_blank">▶ YT</a>
+          <a href="https://tiktok.com/@dicksonshampest" target="_blank">🎵 TT</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Dickson Shampest. All Rights Reserved. Made with passion.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+  <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous">‹</button>
+  <button class="lightbox-next" id="lightboxNext" aria-label="Next">›</button>
+  <div class="lightbox-content">
+    <img src="" alt="Gallery image" id="lightboxImage" />
+  </div>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<!-- ===== HIDDEN AUDIO ===== -->
+<audio id="globalAudio" style="display:none;"></audio>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  // ============================
+  // 1. DROPDOWN TOGGLE (Desktop)
+  // ============================
+  const dropdownToggle = document.getElementById('dropdownToggle');
+  const dropdownMenu = document.getElementById('dropdownMenu');
+  const dropdownArrow = document.getElementById('dropdownArrow');
+
+  dropdownToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdownMenu.classList.toggle('open');
+    dropdownArrow.classList.toggle('open');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-dropdown')) {
+      dropdownMenu.classList.remove('open');
+      dropdownArrow.classList.remove('open');
+    }
+  });
+
+  // ============================
+  // 2. MOBILE NAV
+  // ============================
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  const mobileClose = document.getElementById('mobileClose');
+
+  function openMobileNav() {
+    mobileMenu.classList.add('open');
+    mobileOverlay.classList.add('active');
+    navToggle.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileNav() {
+    mobileMenu.classList.remove('open');
+    mobileOverlay.classList.remove('active');
+    navToggle.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  navToggle.addEventListener('click', openMobileNav);
+  mobileClose.addEventListener('click', closeMobileNav);
+  mobileOverlay.addEventListener('click', closeMobileNav);
+
+  // ============================
+  // 3. PAGE NAVIGATION
+  // ============================
+  const navLinks = document.querySelectorAll('.nav-link');
+  const pages = {
+    home: document.getElementById('page-home'),
+    music: document.getElementById('page-music'),
+    videos: document.getElementById('page-videos'),
+    photos: document.getElementById('page-photos'),
+    about: document.getElementById('page-about'),
+    events: document.getElementById('page-events'),
+    blog: document.getElementById('page-blog'),
+    contact: document.getElementById('page-contact')
+  };
+
+  function showPage(pageId) {
+    Object.values(pages).forEach(p => p.classList.remove('active'));
+    if (pages[pageId]) pages[pageId].classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.classList.toggle('active-link', link.dataset.page === pageId);
+    });
+    dropdownMenu.classList.remove('open');
+    dropdownArrow.classList.remove('open');
+    closeMobileNav();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const page = link.dataset.page;
+      if (page) showPage(page);
+    });
+  });
+
+  // ============================
+  // 4. AUDIO PLAYER - EMPTY (no default audio)
+  // ============================
+  const audio = document.getElementById('globalAudio');
+  const miniPlayBtn = document.getElementById('miniPlayBtn');
+  const miniProgressFill = document.getElementById('miniProgressFill');
+  const miniProgressBar = document.getElementById('miniProgressBar');
+  const miniCurrent = document.getElementById('miniCurrent');
+  const miniDuration = document.getElementById('miniDuration');
+
+  function formatTime(sec) {
+    if (!sec || isNaN(sec)) return '0:00';
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  function updateMiniPlayer() {
+    if (audio.duration) miniDuration.textContent = formatTime(audio.duration);
+    miniCurrent.textContent = formatTime(audio.currentTime);
+    const percent = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+    miniProgressFill.style.width = percent + '%';
+  }
+
+  // Play button is disabled by default - no audio loaded
+  // When user clicks a song from the music page, it will enable and play
+
+  // Play from music grid - this will load and play the selected song
+  document.querySelectorAll('.play-song-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const src = this.dataset.src;
+      if (src && src.trim() !== '') {
+        // Enable the play button
+        miniPlayBtn.disabled = false;
+        miniPlayBtn.classList.remove('disabled');
+        
+        audio.src = src;
+        audio.load();
+        audio.play();
+        miniPlayBtn.innerHTML = `<svg viewBox="0 0 24 24" width="28" height="28"><rect x="6" y="4" width="4" height="16" fill="currentColor"/><rect x="14" y="4" width="4" height="16" fill="currentColor"/></svg>`;
+        document.querySelector('.featured-info h3').textContent = this.dataset.title || 'Now Playing';
+        document.getElementById('featuredTitle').textContent = this.dataset.title || 'Now Playing';
+        // Update cover if available
+        const cardImg = this.closest('.song-card').querySelector('img');
+        if (cardImg) {
+          document.getElementById('featuredCover').src = cardImg.src;
+        }
+        // Remove the "no audio" message
+        const msg = document.querySelector('.no-audio-msg');
+        if (msg) msg.style.display = 'none';
+      } else {
+        alert('🎵 Please add your audio file URL to this song. Update the data-src attribute with your MP3 URL.');
+      }
+    });
+  });
+
+  // Mini play button - now works when audio is loaded
+  miniPlayBtn.addEventListener('click', function() {
+    if (this.disabled) {
+      alert('🎵 No audio loaded. Click a song from the Music page first.');
+      return;
+    }
+    if (audio.paused) {
+      audio.play();
+      this.innerHTML = `<svg viewBox="0 0 24 24" width="28" height="28"><rect x="6" y="4" width="4" height="16" fill="currentColor"/><rect x="14" y="4" width="4" height="16" fill="currentColor"/></svg>`;
+    } else {
+      audio.pause();
+      this.innerHTML = `<svg viewBox="0 0 24 24" width="28" height="28"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>`;
+    }
+  });
+
+  audio.addEventListener('timeupdate', updateMiniPlayer);
+  audio.addEventListener('loadedmetadata', () => {
+    miniDuration.textContent = formatTime(audio.duration);
+  });
+  audio.addEventListener('ended', () => {
+    miniPlayBtn.innerHTML = `<svg viewBox="0 0 24 24" width="28" height="28"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>`;
+    miniProgressFill.style.width = '0%';
+    miniCurrent.textContent = '0:00';
+  });
+
+  miniProgressBar.addEventListener('click', (e) => {
+    if (!audio.src || audio.src === '') return;
+    const rect = miniProgressBar.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = x * audio.duration;
+  });
+
+  // ============================
+  // 5. LIGHTBOX
+  // ============================
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImage');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+
+  let galleryItems = [];
+  let currentIdx = 0;
+
+  function openLightbox(index, items) {
+    galleryItems = items;
+    currentIdx = index;
+    updateLightbox();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function updateLightbox() {
+    if (galleryItems.length) {
+      lightboxImg.src = galleryItems[currentIdx].src;
+      lightboxCaption.textContent = galleryItems[currentIdx].caption || '';
+    }
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function navigateLightbox(dir) {
+    const newIdx = currentIdx + dir;
+    if (newIdx >= 0 && newIdx < galleryItems.length) {
+      currentIdx = newIdx;
+      updateLightbox();
+    }
+  }
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    if (e.key === 'ArrowRight') navigateLightbox(1);
+  });
+  lightboxPrev.addEventListener('click', () => navigateLightbox(-1));
+  lightboxNext.addEventListener('click', () => navigateLightbox(1));
+
+  function initGallery(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const items = container.querySelectorAll('.gallery-item');
+    const data = [];
+    items.forEach((item, idx) => {
+      const img = item.querySelector('img');
+      data.push({ src: img.src, caption: img.alt || `Photo ${idx+1}` });
+      item.addEventListener('click', () => openLightbox(idx, data));
+    });
+  }
+
+  initGallery('homeGallery');
+  initGallery('fullGallery');
+
+  // ============================
+  // 6. CONTACT FORM
+  // ============================
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = this;
+    const name = form.querySelector('input[placeholder="Your Name"]').value;
+    const email = form.querySelector('input[placeholder="Your Email"]').value;
+    const subject = form.querySelector('input[placeholder="Subject"]').value || 'New Message from Website';
+    const message = form.querySelector('textarea').value;
+
+    const mailtoLink = `mailto:xbluemim@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+    window.location.href = mailtoLink;
+
+    alert('📧 Thank you for your message! Your email client will open to send it.');
+    form.reset();
+  });
+
+  // ============================
+  // 7. NO DEFAULT AUDIO - EMPTY
+  // ============================
+  // Audio is empty - user must click a song from Music page
+  console.log('🎵 Dickson Shampest music website ready!');
+  console.log('📝 To add your own music:');
+  console.log('1. Go to the Music page');
+  console.log('2. Update the data-src attribute on each song card with your MP3 URL');
+  console.log('3. Example: data-src="https://your-server.com/song.mp3"');
+  console.log('4. Replace all placeholder images with your own images');
+  console.log('5. Update social media links to your real profiles');
+  console.log('6. Your email (xbluemim@gmail.com) and phone (077174798) are already set.');
+</script>
+</body>
+</html>
